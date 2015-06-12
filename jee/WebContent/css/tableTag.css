@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+table {
+    border-collapse: collapse; /* 테이블 셀사이에 간격 없애기 */
+    border-spacing: 0
+}
+.tableTag{
+	width: 500px;
+	height: 200px;
+}
+.tableTag thead tr td{
+	border: 1px solid gray;
+	height: 50px;
+}
+.tableTag tbody tr td{
+	border: 1px solid gray;
+}

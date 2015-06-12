@@ -1,0 +1,7 @@
+@CHARSET "UTF-8";
+/* @import url("../common/common.css"); */
+/* 현재의 상태에서 ../ 의 위치는 views를 가르킨다. */
+.listTag{
+	width:  300px;
+	border: 1px solid black;
+}
