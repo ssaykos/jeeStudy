@@ -19,22 +19,20 @@ public class ServiceCreateImpl implements ServiceCreate{
 	}
 
 	@Override
-	public String bookSerialNumberGenerator(String bookCategory) {
+	public String bookSerialNumberGenerator(String bookCategory) {//aa/bb/cc
 		// TODO Auto-generated method stub
-	//	int checkCategoryCount=checkCategoryCount(bookCategory);
 		
 		String bookSerialNumber="";
-		String none="";
-		String firstCategory=bookCategory.substring(0,bookCategory.indexOf("/"));//문자열의 0번째부터 /가 있는 곳의 문자열까지 잘라서 넣는다.
-		String tempSecondCategory=bookCategory.substring(bookCategory.indexOf("/")+1);
+		String firstCategory=bookCategory.substring(0,bookCategory.indexOf("/"));//문자열의 0번째부터 /가 있는 곳의 문자열까지 잘라서 넣는다.//aa
+		String tempSecondCategory=bookCategory.substring(bookCategory.indexOf("/")+1);//bb/cc
 		String secondCategory="";//값을 넣기 전 초기화
 		String thirdCategory="";//값을 넣기 전 초기화
-		secondCategory=tempSecondCategory.contains("/") ? tempSecondCategory : tempSecondCategory.substring(0,tempSecondCategory.indexOf("/"));
+		secondCategory=tempSecondCategory.contains("/") ? tempSecondCategory.substring(0,tempSecondCategory.indexOf("/")) : tempSecondCategory;
 		//첫번째 분류 즉 대분류와 "/"표시를 삭제한 값을두번째 tempSecondCategory에  넣은후 tempsecondCategory에  "/" 가 없으면 SecondCategory에 tempSecondCategory를 넣고 "/"가있으면 tempSecondCategory열중 "/" 앞의 문자열을 넣는다.
-		thirdCategory=tempSecondCategory.contains("/") ? "" : tempSecondCategory.substring(bookCategory.indexOf("/")+1,tempSecondCategory.length());
+		thirdCategory=tempSecondCategory.contains("/") ? tempSecondCategory.substring(tempSecondCategory.indexOf("/")+1,tempSecondCategory.length()) : "";
 		//첫번째 분류 즉 대분류와 "/"표시를 삭제한 값을두번째 tempSecondCategory에  넣은후 tempSecondCategory에 "/" 가 없으면 ThirdCategory에 널값을 넣고  "/"가있으면 tempSecondCategory열중 "/"+1부터 그 뒤의 문자열을 넣는다.
 		
-		bookSerialNumber=FirstSerialNumberGenerator(firstCategory);
+		bookSerialNumber+=FirstSerialNumberGenerator(firstCategory);
 		bookSerialNumber+=SecondSerialNumberGenerator(secondCategory);
 		bookSerialNumber+=ThirdSerialNumberGenerator(thirdCategory);
 		//이 뒤에 모든 데이터들의 넘버를 같은자리에 같은데이터 값을 가진것들을 검색하면서 카운트를 올리고 +1 해서  += 를 시켜준후 동일 책
@@ -195,7 +193,6 @@ public class ServiceCreateImpl implements ServiceCreate{
 	public String ThirdSerialNumberGenerator(String bookCategory) {
 		// TODO Auto-generated method stub
 		String thirdSerialNumber="";
-
 		
 		switch (bookCategory) {
 		case "":

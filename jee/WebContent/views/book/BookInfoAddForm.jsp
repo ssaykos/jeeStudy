@@ -126,7 +126,7 @@
 				<tr>
 					<td></td>
 					<td></td>
-					<td><input type="submit" value="등록"></td>
+					<td><input type="submit" value="책정보 등록하기"></td>
 				</tr>
 			</table>
 		</form>			
