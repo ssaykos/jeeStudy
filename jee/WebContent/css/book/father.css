@@ -2,6 +2,6 @@
 .tableClass{
 	border : 1px  solid black; 
 	border-collapse: collapse; 
-	width: 500px; 
+	min-width: 700px; 
 	height: 200px;
 }

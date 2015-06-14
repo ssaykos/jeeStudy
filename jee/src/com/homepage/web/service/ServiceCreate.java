@@ -1,6 +1,6 @@
 package com.homepage.web.service;
 
-public interface serviceCreate {
+public interface ServiceCreate {
 	public void bookAdditionFull();//정식 등록
 	public void bookAdditionSmall();//약식등록인데 파라미터 값들 별로 만들어야 한다.
 	public String bookSerialNumberGenerator(String bookCategory);// 책 식별넘버 생성기

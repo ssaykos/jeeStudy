@@ -1,10 +1,10 @@
 package com.homepage.web.impls;
 
-import com.homepage.web.beans.BookVO;
-import com.homepage.web.service.serviceCreate;
+import com.homepage.web.beans.BookBean;
+import com.homepage.web.service.ServiceCreate;
 
-public class serviceCreateImpl implements serviceCreate{
-	BookVO vo = new BookVO();
+public class ServiceCreateImpl implements ServiceCreate{
+	BookBean vo = new BookBean();
 
 	@Override
 	public void bookAdditionFull() {
@@ -19,8 +19,7 @@ public class serviceCreateImpl implements serviceCreate{
 	}
 
 	@Override
-	public String bookSerialNumberGenerator(String bo
-			okCategory) {
+	public String bookSerialNumberGenerator(String bookCategory) {
 		// TODO Auto-generated method stub
 	//	int checkCategoryCount=checkCategoryCount(bookCategory);
 		
@@ -39,10 +38,10 @@ public class serviceCreateImpl implements serviceCreate{
 		bookSerialNumber+=SecondSerialNumberGenerator(secondCategory);
 		bookSerialNumber+=ThirdSerialNumberGenerator(thirdCategory);
 		//이 뒤에 모든 데이터들의 넘버를 같은자리에 같은데이터 값을 가진것들을 검색하면서 카운트를 올리고 +1 해서  += 를 시켜준후 동일 책
-		bookSerialNumber+=FourthSerialNumberGenerator(vo.getBookCategory());//맵 해시맵 객체를 생성해서 bookVO를 넣게 되면 파라미터를 한번 더 감싸야 하는 부분?
+		/*bookSerialNumber+=FourthSerialNumberGenerator(vo.getbGroup());//맵 해시맵 객체를 생성해서 bookVO를 넣게 되면 파라미터를 한번 더 감싸야 하는 부분?
 		//책분류의 값이 동일한 것들을 쭉 비교하면서 동일한 만큼 카운트를 올리고 +1시킨다음 세자릿수 맞춰서 
-		bookSerialNumber+=FifthSerialNumberGenerator(vo.getBookTitle(), vo.getBookWriter());//맵 해시맵 객체를 생성해서 bookVO를 넣게 되면 파라미터를 한번 더 감싸야 하는 부분?
-		
+		bookSerialNumber+=FifthSerialNumberGenerator(vo.getbTitle(), vo.getAuthor());//맵 해시맵 객체를 생성해서 bookVO를 넣게 되면 파라미터를 한번 더 감싸야 하는 부분?
+		*/
 		return bookSerialNumber;
 	}
 
@@ -58,7 +57,7 @@ public class serviceCreateImpl implements serviceCreate{
 		case "시":
 			firstSerialNumber="02";
 			break;
-		case "에세이":
+		case "수필":
 			firstSerialNumber="03";
 			break;
 		case "경제와경영":
@@ -139,43 +138,43 @@ public class serviceCreateImpl implements serviceCreate{
 		String secondSerialNumber="";
 		
 		switch (bookCategory) {
-		case "고전소설": case "시조": case "인물에세이":
+		case "고전소설": case "시조": case "인물수필":
 			secondSerialNumber="01";
 			break;
 
-		case "세계문학": case "현대시": case "지혜에세이":
+		case "세계소설": case "현대시": case "지혜수필":
 			secondSerialNumber="02";
 			break;
 
-		case "추리소설": case "사랑시": case "테마에세이":
+		case "추리소설": case "사랑시": case "테마수필":
 			secondSerialNumber="03";
 			break;
 
-		case "테마소설": case "한시": case "명언에세이":
+		case "테마소설": case "한시": case "명언수필":
 			secondSerialNumber="04";
 			break;
 
-		case "역사소설": case "명시모음": case "상식에세이":
+		case "역사소설": case "명시모음": case "상식수필":
 			secondSerialNumber="05";
 			break;
 
-		case "판타지소설": case "그림시": case "인생에세이":
+		case "판타지소설": case "그림시": case "인생수필":
 			secondSerialNumber="06";
 			break;
 
-		case "무협소설": case "다른나라시": case "명상에세이":
+		case "무협소설": case "다른나라시": case "명상수필":
 			secondSerialNumber="07";
 			break;
 
-		case "퓨전소설": case "감성에세이":
+		case "퓨전소설": case "감성수필":
 			secondSerialNumber="08";
 			break;
 
-		case "탈무드에세이":
+		case "탈무드수필":
 			secondSerialNumber="09";
 			break;
 
-		case "나라별에세이":
+		case "나라별수필":
 			secondSerialNumber="10";
 			break;
 
@@ -183,9 +182,6 @@ public class serviceCreateImpl implements serviceCreate{
 			secondSerialNumber="11";
 			break;
 
-		case "":
-			secondSerialNumber="12";
-			break;
 
 
 		default:
@@ -199,7 +195,59 @@ public class serviceCreateImpl implements serviceCreate{
 	public String ThirdSerialNumberGenerator(String bookCategory) {
 		// TODO Auto-generated method stub
 		String thirdSerialNumber="";
+
 		
+		switch (bookCategory) {
+		case "":
+			thirdSerialNumber="00";
+			break;
+		case "한국고전": case "미국": case "한국추리":
+			thirdSerialNumber="01";
+			break;
+
+		case "일본고전": case "일본": case "일본추리":
+			thirdSerialNumber="02";
+			break;
+
+		case "중국고전": case "중국": case "중국추리":
+			thirdSerialNumber="03";
+			break;
+
+		case "러시아고전": case "러시아": case "영미추리":
+			thirdSerialNumber="04";
+			break;
+
+		case "유럽고전": case "유럽": case "유럽추리":
+			thirdSerialNumber="05";
+			break;
+
+		case "아시아고전": case "아시아": case "아시아추리":
+			thirdSerialNumber="06";
+			break;
+
+		case "아프리카고전": case "아프리카": case "기타추리":
+			thirdSerialNumber="07";
+			break;
+
+		case "기타고전": case "기타나라":
+			thirdSerialNumber="08";
+			break;
+
+		case "defaut1":
+			thirdSerialNumber="09";
+			break;
+
+		case "defaut2":
+			thirdSerialNumber="10";
+			break;
+
+		case "defaut3":
+			thirdSerialNumber="11";
+			break;
+			
+		default:
+			break;
+		}
 		
 		return thirdSerialNumber;
 	}
