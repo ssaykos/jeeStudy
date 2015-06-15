@@ -24,6 +24,7 @@
 					<td><input type="submit" value="검 색"></td>
 				</tr>
 			</table>
+			
 		</div>
 	</div>
 	
