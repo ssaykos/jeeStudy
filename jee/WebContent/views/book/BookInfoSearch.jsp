@@ -29,7 +29,7 @@
 		<table>
 			<tr>
 				<td></td>
-				<td><%=request.getAttribute("검색분류") %></td>
+				<td><%= request.getAttribute("검색분류") %></td>
 				<td></td>
 			</tr>
 		</table>

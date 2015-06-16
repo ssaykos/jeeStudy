@@ -53,6 +53,7 @@ public class BookInfoSearch extends HttpServlet {
 					a+="\t\t"+map.get("식별번호").getAuthor();
 					a+="\t"+map.get("식별번호").getPublisher();
 					a+="\t"+map.get("식별번호").getSerialNo();
+					/*a+=""+(i+1)+"\t"+map.get("식별번호");*/
 					a+="\n";
 				}else{
 					if(i == map.size()-1 && a.equals("no.\t 책 제목 \t\t\t\t\t 저자명 \t\t 출판사 \t\t 식별번호 \n")){

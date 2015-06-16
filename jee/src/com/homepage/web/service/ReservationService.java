@@ -1,11 +1,10 @@
 package com.homepage.web.service;
 
 public interface ReservationService {
-	 public void alertMsg(int num);
-	 public int inputCheck(String input, int first, int last);
-	 public void checkIn();
-	 public void checkOut();
-	 public void showStatus();
+	
+	 public String checkIn(int floor, int row, String id);
+	 public String checkOut(int floor, int row, String id);
+	 public String[][] showStatus();
 	 public void process();
 	
 }
