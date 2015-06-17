@@ -25,7 +25,7 @@ import com.homepage.web.service.HelloService;
  * Servlet implementation class MemberController
  */
 import com.homepage.web.service.MemberService;
-@WebServlet({"/model2/join.do","/model2/login.do"})
+@WebServlet({"/model2/join.do","/model2/login.do","/member/searchIdForm.do","/member/searchPassForm.do"})
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
       
@@ -35,12 +35,38 @@ public class MemberController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    		throws ServletException, IOException {
+    	// TODO Auto-generated method stub
+    	String path=request.getServletPath();
+    	
+    	switch (path) {
+    	case "/member/searchIdForm.do":
+			
+			searchId(request, response);
+			
+			break;
+		
+		case "/member/searchPassForm.do":
+			
+			searchPass(request, response);
+			
+			break;
+
+		default:
+			break;
+		}
+    	
+    	
+    }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stubswitch (request.getServletPath()) {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
 		switch (request.getServletPath()) {
+				
 		case "/model2/join.do":
 			
 			gojoin(request, response);
@@ -58,6 +84,18 @@ public class MemberController extends HttpServlet {
 		}
 		
 		
+	}
+
+	private void searchPass(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher dispatcher2 = request.getRequestDispatcher("/views/model2/SearchPassForm.jsp");
+		dispatcher2.forward(request, response);
+	}
+
+	private void searchId(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/model2/SearchIdForm.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	private void gologin(HttpServletRequest request, HttpServletResponse response)

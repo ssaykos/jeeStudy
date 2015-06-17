@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -40,7 +39,7 @@
              if (defaultSeat[i][j] == null) {
                 %><%= i+1 %>-<%= j+1 %> 호 □ <%
              } else {
-               %><%= i+1 %>-<%= j+1 %> 호 ■ <%-- ${name[i][j]} --%> <%
+               %><%= i+1 %>-<%= j+1 %> 호 ■  <%
              }
          }
          %> <br> <%
@@ -52,12 +51,12 @@
 	    
 	    seat = (String[][])request.getAttribute("seat");
 	    	    	    
-		 for (int i=0 ; i < seat.length+1; i++) {
-	         for (int j=0 ; j < seat[i].length+1; j++) {
+		 for (int i=0 ; i < seat.length; i++) {
+	         for (int j=0 ; j < seat[i].length; j++) {
 	             if (seat[i][j] == null) {
 	                %><%= i+1 %>-<%= j+1 %> 호 □ <%
 	             } else {
-	               %><%= i+1 %>-<%= j+1 %> 호 ■ ${seat[i][j]} <%
+	               %><%= i+1 %>-<%= j+1 %> 호 ■  <%
 	             }
 	         }
 	         %> <br> <%
@@ -70,6 +69,29 @@
 		<form action="<%= request.getContextPath() %>/Reservation/checkIn.do">
 		<fieldset>
 			<legend>영화관좌석예매</legend>
+				<ol>
+					<li>
+						<label for="prod">좌석</label>
+						<input type="text" name="id" id="id" placeholder="아이디를 입력해주세요" />
+					</li>
+					<li>
+						<label for="num">열번호</label>
+						<input type="number" id="floor" name="floor" min="1" max="3" value="1" />
+					</li>
+					<li>
+						<label for="num">행번호</label>
+						<input type="number" id="row" name="row" min="1" max="5" value="1" />
+					</li>
+				</ol>
+		</fieldset>
+		
+		<input type="submit" value="등록">
+	</form>
+	</div>
+	<div>
+		<form action="<%= request.getContextPath() %>/Reservation/checkOut.do">
+		<fieldset>
+			<legend>영화관 좌석 예약 취소</legend>
 				<ol>
 					<li>
 						<label for="prod">좌석</label>

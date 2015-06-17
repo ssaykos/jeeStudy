@@ -36,13 +36,13 @@ public class ReservationServiceImpl implements ReservationService{
                 if (row == 0){}
                      // 0 이 넘어왔다면 while 문으로 돌아가 입력을 다시 받는다
  
-                if (seat[floor - 1][row - 1] != null) { // 이미 이름이 있다면(예약중)
+                if (seat[floor ][row ] != null) { // 이미 이름이 있다면(예약중)
                     msg="\n!!! 그 방은 이미 예약중입니다 !!!";
                     // 입실하지 않고, 입력을 다시받는다.
                 } else {
                     // 이름이 없다면 checkIn 시킨다.
                
-                    seat[floor - 1][row - 1] = id;
+                    seat[floor ][row ] = id;
  
                    
                     msg=id+"님 체크인이 완료되었습니다.";

@@ -43,28 +43,37 @@ public class ReservationController extends HttpServlet {
 		
 		String id=request.getParameter("id");
 		
-		String path=request.getContextPath();
+		String path=request.getServletPath();
 		String msg="";
 		
-		seat[floor][row]=id;
+		
 		
 		switch (path) {
         case "/Reservation/checkIn.do":
-        	System.out.println("체크인 넘어옴");
+        	
+        	seat[floor][row]=id;
         	
         	msg = service.checkIn(floor,row,id);
         	
         	request.setAttribute("msg", msg);
         	request.setAttribute("seat", seat);
         	
+        	RequestDispatcher dispatcher1 = request.getRequestDispatcher("/views/model2/ReservationForm.jsp");
+    		dispatcher1.forward(request, response);
         	
             break; // 체크인
         case "/Reservation/checkOut.do":
+        	
+        	seat[floor][row]=null;
+        	
         	msg= service.checkOut(floor, row, id);
+        	
         	request.setAttribute("msg", msg);
         	request.setAttribute("seat", seat);
         	
-        	
+        	RequestDispatcher dispatcher2 = request.getRequestDispatcher("/views/model2/ReservationForm.jsp");
+    		dispatcher2.forward(request, response);
+    		
         	break; // 체크아웃
         case "/Reservation/showStatue.do":
         	String[][]seat=service.showStatus();
@@ -77,8 +86,7 @@ public class ReservationController extends HttpServlet {
         default: service.showStatus(); break;
 
         }
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/model2/ReservationForm.jsp");
-		dispatcher.forward(request, response);
+		
 	}
 
 	
