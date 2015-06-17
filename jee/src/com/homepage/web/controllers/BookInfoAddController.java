@@ -18,7 +18,7 @@ import com.homepage.web.service.ServiceCreate;
 /**
  * Servlet implementation class BookInfoAddController
  */
-@WebServlet("/lib/BookInfoAdd.lib")
+@WebServlet("/book/BookInfoAdd.lib")
 public class BookInfoAddController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -39,16 +39,16 @@ public class BookInfoAddController extends HttpServlet {
 		Date date=new Date();
 		SimpleDateFormat Sdate = new SimpleDateFormat("yyyy년 MM월 dd일 E요일 a hh시mm분ss초");
 		
-		String bTitle=request.getParameter("책제목");
-		String author=request.getParameter("저자명");
-		String publisher=request.getParameter("출판사");
+		String bTitle=request.getParameter("책제목").trim().replaceAll(" ", "");
+		String author=request.getParameter("저자명").trim().replaceAll(" ", "");
+		String publisher=request.getParameter("출판사").trim().replaceAll(" ", "");
 		String pressDate=request.getParameter("출판일");
 		String bGroup=request.getParameter("1차분류")+"/"+request.getParameter("2차분류")+"/"+request.getParameter("3차분류");
 		
 		ServiceCreate sc = new ServiceCreateImpl();
-		String serialNo=sc.bookSerialNumberGenerator(bGroup);
+		String serialNo=sc.bookSerialNumberGenerator(bGroup,bTitle,author);
 		
-		request.setAttribute("일련번호", ""+serialNo+"(참고 - 셋과 맵을 이용해서 자료 수에 따른 나머지 4자리의 숫자표기는 아직 미완성..)");
+		request.setAttribute("일련번호", ""+serialNo);
 		
 		request.setAttribute("책제목", ""+bTitle);
 		request.setAttribute("저자명", ""+author);
