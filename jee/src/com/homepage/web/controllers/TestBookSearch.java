@@ -13,7 +13,6 @@ public class TestBookSearch {
 
 	
 	public static void main(String[] args) {
-		Map<String, BookBean> map = new HashMap<String, BookBean>();
 		Date a = new Date();
 		BookBean[] bean = { new BookBean("사람은 무엇으로 사는가?", "레프 니콜라예비치 톨스토이", "더클래식", "소설/세계소설/러시아", a , "0102030021"),
 							new BookBean("사람은 무엇으로 사는가?", "레프 니콜라예비치 톨스토이", "더클래식", "소설/세계소설/러시아", a , "0102030022"),
@@ -27,41 +26,34 @@ public class TestBookSearch {
 				
 		String aa="no.\t 책 제목 \t\t\t\t\t 저자명 \t\t 출판사 \t\t 식별번호 \n";
 		
-		
+		for (int i = 0; i < bean.length; i++) {
+			vector.add(bean[i]);
+		}
 		
 		switch (name) {
 		
+		
+		
 		case "책제목":
 			
-			for (int i = 0; i < bean.length; i++) {
-				vector.add(bean[i]);
-			}
-			for (BookBean bookBean : vector) {
-				if()
-			}
-			/*for (int j = 0; j < bean.length; j++) {
-				map.put("책제목",bean[j]);		
-			}
 			
-			for (int i = 0; i < map.size(); i++) {
-				if(map.get("책제목").getbTitle().equals("호질")){
-					aa+=""+(i+1)+"\t"+map.get("식별번호").getbTitle();
-					aa+="\t\t"+map.get("식별번호").getAuthor();
-					aa+="\t"+map.get("식별번호").getPublisher();
-					aa+="\t"+map.get("식별번호").getSerialNo();
-					aa+="\n";
-				}else{
-					if(i == map.size()-1 && aa.equals("no.\t 책 제목 \t\t\t\t\t 저자명 \t\t 출판사 \t\t 식별번호 \n")){
-						aa="검색결과가 없습니다.";
-					}
+			for (int i = 0; i < vector.size(); i++) {
+				if(vector.elementAt(i).getbTitle().equals("호질")){
+					aa+=""+(i+1)+"\t"+vector.elementAt(i).getbTitle();
+				aa+="\t\t"+vector.elementAt(i).getAuthor();
+				aa+="\t"+vector.elementAt(i).getPublisher();
+				aa+="\t"+vector.elementAt(i).getSerialNo();
+				aa+="\n";
+			}else{
+				if(i == vector.size()-1 && aa.equals("no.\t 책 제목 \t\t\t\t\t 저자명 \t\t 출판사 \t\t 식별번호 \n")){
+					aa="검색결과가 없습니다.";
 				}
-			}*/		
-			break;
+			}
+			}	
+		break;
 		
 		case "식별번호":
-			for (int j = 0; j < bean.length; j++) {
-				map.put("식별번호",bean[j]);		
-			}
+			
 			/*Set set=map.entrySet();
 			Iterator it=set.iterator();
 			while (it.hasNext()) {
@@ -72,16 +64,16 @@ public class TestBookSearch {
 				
 			}*/
 			
-			for (int i = 0; i < map.size(); i++) {
-				if(map.get("식별번호").getSerialNo().equals("0102030011")){
-					aa+=""+(i+1)+"\t"+map.get("식별번호").getbTitle();
-					aa+="\t\t"+map.get("식별번호").getAuthor();
-					aa+="\t"+map.get("식별번호").getPublisher();
-					aa+="\t"+map.get("식별번호").getSerialNo();
+			for (int i = 0; i < vector.size(); i++) {
+				if(vector.elementAt(i).getSerialNo().equals("0102030011")){
+					aa+=""+(i+1)+"\t"+vector.elementAt(i).getbTitle();
+					aa+="\t\t"+vector.elementAt(i).getAuthor();
+					aa+="\t"+vector.elementAt(i).getPublisher();
+					aa+="\t"+vector.elementAt(i).getSerialNo();
 					/*a+=""+(i+1)+"\t"+map.get("식별번호");*/
 					aa+="\n";
 				}else{
-					if(i == map.size()-1 && aa.equals("no.\t 책 제목 \t\t\t\t\t 저자명 \t\t 출판사 \t\t 식별번호 \n")){
+					if(i == vector.size()-1 && aa.equals("no.\t 책 제목 \t\t\t\t\t 저자명 \t\t 출판사 \t\t 식별번호 \n")){
 						aa="검색결과가 없습니다.";
 					}
 				}
@@ -89,37 +81,32 @@ public class TestBookSearch {
 			break;
 		
 		case "저자명":
-			for (int j = 0; j < bean.length; j++) {
-				map.put("저자명",bean[j]);		
-			}
-			
-			for (int i = 0; i < map.size(); i++) {
-				if(map.get("책제목").getAuthor().equals("박지원")){
-					aa+=""+(i+1)+"\t"+map.get("식별번호").getbTitle();
-					aa+="\t\t"+map.get("식별번호").getAuthor();
-					aa+="\t"+map.get("식별번호").getPublisher();
-					aa+="\t"+map.get("식별번호").getSerialNo();
+						
+			for (int i = 0; i < vector.size(); i++) {
+				if(vector.elementAt(i).getAuthor().equals("박지원")){
+					aa+=""+(i+1)+"\t"+vector.elementAt(i).getbTitle();
+					aa+="\t\t"+vector.elementAt(i).getAuthor();
+					aa+="\t"+vector.elementAt(i).getPublisher();
+					aa+="\t"+vector.elementAt(i).getSerialNo();
 					aa+="\n";
 				}else{
-					if(i == map.size()-1 && aa.equals("no.\t 책 제목 \t\t\t\t\t 저자명 \t\t 출판사 \t\t 식별번호 \n")){
+					if(i == vector.size()-1 && aa.equals("no.\t 책 제목 \t\t\t\t\t 저자명 \t\t 출판사 \t\t 식별번호 \n")){
 						aa="검색결과가 없습니다.";
 					}
 				}
 			}
 			break;
 		case "출판사":
-			for (int j = 0; j < bean.length; j++) {
-				map.put("출판사",bean[j]);		
-			}
-			for (int i = 0; i < map.size(); i++) {
-				if(map.get("책제목").getPublisher().equals("더클래식")){
-					aa+=""+(i+1)+"\t"+map.get("식별번호").getbTitle();
-					aa+="\t\t"+map.get("식별번호").getAuthor();
-					aa+="\t"+map.get("식별번호").getPublisher();
-					aa+="\t"+map.get("식별번호").getSerialNo();
+			
+			for (int i = 0; i < vector.size(); i++) {
+				if(vector.elementAt(i).getPublisher().equals("더클래식")){
+					aa+=""+(i+1)+"\t"+vector.elementAt(i).getbTitle();
+					aa+="\t\t"+vector.elementAt(i).getAuthor();
+					aa+="\t"+vector.elementAt(i).getPublisher();
+					aa+="\t"+vector.elementAt(i).getSerialNo();
 					aa+="\n";
 				}else{
-					if(i == map.size()-1 && aa.equals("no.\t 책 제목 \t\t\t\t\t 저자명 \t\t 출판사 \t\t 식별번호 \n")){
+					if(i == vector.size()-1 && aa.equals("no.\t 책 제목 \t\t\t\t\t 저자명 \t\t 출판사 \t\t 식별번호 \n")){
 						aa="검색결과가 없습니다.";
 					}
 				}

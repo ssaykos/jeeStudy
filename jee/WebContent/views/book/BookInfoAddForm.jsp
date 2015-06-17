@@ -100,7 +100,7 @@
 						<button type="button" >선택</button>
 						<select name="3차분류" size="1" >
 							<option value="default">---3차 분류---</option>
-							<option value="default">고전소설</option>
+							<option value="default">--고전소설--</option>
 							<option value="한국고전">한국고전</option>
 							<option value="일본고전">일본고전</option>
 							<option value="중국고전">중국고전</option>
@@ -108,7 +108,7 @@
 							<option value="유럽고전">유럽고전</option>
 							<option value="아시아고전">아시아고전</option>
 							<option value="아프리카고전">아프리카고전</option>
-							<option value="default">세계소설</option>
+							<option value="default">--세계소설--</option>
 							<option value="미국">미국</option>
 							<option value="일본">일본</option>
 							<option value="중국">중국</option>

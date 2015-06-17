@@ -4,32 +4,32 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
-	<title>Document</title>
+	<title>검색 결과 페이지</title>
 </head>
 <body>
-	<div>
 		<div>
-			<form action="<%= request.getContextPath() %>/lib/BookInfoSearch.lib"></form>
+		<div>
+			<form action="<%= request.getContextPath() %>/book/BookInfoSearch.soso"></form>
 			<table>
 				<tr>
 					<td>
-						<select name="검색분류" size="1">
-							<option value="식별번호">책고유번호</option><!-- (쿼리로 관리자만 보이게 하기) -->
-							<option value="책제목">도서명</option>
-							<option value="저자명">저자</option>
-							<option value="출판사">출판사</option>
+						<select name="search1" size="1">
+							<option value="serialNo">책고유번호</option><!-- (쿼리로 관리자만 보이게 하기) -->
+							<option value="bTitle">도서명</option>
+							<option value="author">저자</option>
+							<option value="publisher">출판사</option>
 						</select>
 					</td>
-					<td><input name="검색" type="search" placeholder="검색"></td>
-					<td><input type="submit" value="검 색"></td>
+					<td><input name="search2" type="search"></td>
+					<td><input type="submit" value="검색"></td>
 				</tr>
 			</table>
 		</div>
-	<div>
+		<div>
 		<table>
 			<tr>
 				<td></td>
-				<td><%= request.getAttribute("검색분류") %></td>
+				<td><%= request.getAttribute("search") %></td>
 				<td></td>
 			</tr>
 		</table>
