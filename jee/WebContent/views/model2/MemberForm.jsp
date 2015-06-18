@@ -8,39 +8,11 @@
 	<style>
 		@import url("<%= request.getContextPath() %>/css/koup.css");
 	</style>
-	<script type="text/javascript">
 	
-	function searchId(){
-		window.open("<%= request.getContextPath() %>/member/searchIdForm.do",
-				"searchId",
-				"scrollbars,toolbar=no,location=no,directories=no,status=no,menubar=yes,width=600,height=500,top=200,left=400");
-	}
-	function searchPass() {
-		window.open("<%= request.getContextPath() %>/member/searchPassForm.do",
-				"searchPass",
-				"scrollbars,toolbar=no,location=no,directories=no,status=no,menubar=yes,width=600,height=500,top=200,left=400");
-	}
-	function join(){
-		<%-- location.href="<%=request.getContextPath()%>" --%>
-		document.frmjoin.submit();
-	}
-	function login(){
-		 if(document.frmlogin.id.value.length==0){
-			alert("아이디를 써주세요");
-			frmlogin.id.focus();
-		}
-		if(document.frmlogin.password.value==""){
-			alert("비밀번호는 반드시 입력해야 합니다.");
-			frmlogin.password.focus();
-		}
-		document.frmlogin.submit(); 
-	}
-	</script>
 </head>
 <body>
 	<div>
-	
-			<form action="<%= request.getContextPath() %>/model2/join.do" method="post" name="frmjoin">
+		<form action="<%= request.getContextPath() %>/model2/join.do" method="post" name="frmjoin">
 			<fieldset>
 			<legend>회원가입</legend>
 				<table>
@@ -71,8 +43,8 @@
 						</td>
 					</tr>
 				</table>
-				</fieldset>
-			</form>
+			</fieldset>
+		</form>
 		<form action="<%= request.getContextPath() %>/model2/login.do" method="post" name="frmlogin">
 			<fieldset>
 			<legend>로그인</legend>
@@ -96,12 +68,13 @@
 			</form>
 			<div>
 				<span>
-					<a href="#" onclick="searchId()">아이디 찾기</a>
+					<a href="#" onclick="searchId('<%= request.getContextPath() %>/member/searchIdForm.do')">아이디 찾기</a>
 				</span>
 				<span>
-					<a href="#" onclick="searchPass()">비밀번호 찾기</a>
+					<a href="#" onclick="searchPass('<%= request.getContextPath() %>/member/searchPassForm.do')">비밀번호 찾기</a>
 				</span>
 			</div>
 	</div>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/js/member.js"></script>
 </body>
 </html>

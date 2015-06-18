@@ -3,9 +3,6 @@ package com.homepage.web.beans;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.homepage.web.impls.ServiceCreateImpl;
-import com.homepage.web.service.ServiceCreate;
-
 public class BookBean {
 	private String bTitle;//책이름
 	private String author;//책저자
@@ -20,12 +17,7 @@ public class BookBean {
 	private Date pressDate;//책 출판일
 	private Date rentDate;//책 대여일//대여일들의 누적값에 대한 수정 필요
 	private Date entrada;//입고일
-	
-	//일단 다른 곳에서 데이터 베이스를 실험 하기 위해..더미값을..
-	
-	ServiceCreate create = new ServiceCreateImpl();
-	
-	
+		
 	public BookBean() {
 		// TODO Auto-generated constructor stub
 		
@@ -54,7 +46,7 @@ public class BookBean {
 	
 	public BookBean(String bookTitle, String bookWriter, String bookCompany, String bookCategory, Date bookMakeDate, String serialNumber) {
 		// TODO Auto-generated constructor stub
-		this.bTitle=bookTitle;
+		this.bTitle=bookTitle; //도서 입고를 위한 생성자.
 		this.author=bookWriter;
 		this.publisher=bookCompany;
 		this.bGroup=bookCategory;
@@ -65,7 +57,7 @@ public class BookBean {
 	}
 	public BookBean(String bookTitle, String bookWriter, String bookCompany, String bookCategory, Date bookMakeDate, String serialNumber, int rentCount) {
 		// TODO Auto-generated constructor stub
-		this.bTitle=bookTitle;
+		this.bTitle=bookTitle;//도서 통합검색을 위한 더미값을 넣기 위한 생성자
 		this.author=bookWriter;
 		this.publisher=bookCompany;
 		this.bGroup=bookCategory;
@@ -75,6 +67,7 @@ public class BookBean {
 		this.exist=true;//입고를 하면서 입고일이 들어왓는데..있나 없나 확인 하는 곳이 비어있으면 웃기다..
 		this.rentCount=rentCount;
 	}
+	
 	
 	public String getbTitle() {
 		return bTitle;

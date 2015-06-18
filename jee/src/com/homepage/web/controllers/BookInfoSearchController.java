@@ -126,7 +126,7 @@ public class BookInfoSearchController extends HttpServlet {
 			}
 			request.setAttribute("search", sResult);
 		}
-		request.setAttribute("count", count);
+		request.setAttribute("count", ""+count);
 		RequestDispatcher dispatcher=request.getRequestDispatcher("/views/book/BookInfoSearchForm.jsp");
 		dispatcher.forward(request, response);
 		/*String search2= request.getParameter("search2");//검색 값 가져오기
@@ -204,7 +204,7 @@ public class BookInfoSearchController extends HttpServlet {
 			}
 			request.setAttribute("search", sResult);
 		}
-		request.setAttribute("count", count);		
+		request.setAttribute("count", ""+count);		
 		RequestDispatcher dispatcher=request.getRequestDispatcher("/views/book/BookInfoSearchForm.jsp");
 		dispatcher.forward(request, response);
 		
@@ -261,7 +261,7 @@ public class BookInfoSearchController extends HttpServlet {
 			}
 			request.setAttribute("search", sResult);
 		}
-		request.setAttribute("count", count);
+		request.setAttribute("count", ""+count);
 		RequestDispatcher dispatcher=request.getRequestDispatcher("/views/book/BookInfoSearchForm.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -317,7 +317,7 @@ public class BookInfoSearchController extends HttpServlet {
 			}
 			request.setAttribute("search", sResult);
 		}
-		request.setAttribute("count", count);
+		request.setAttribute("count", ""+count);
 		RequestDispatcher dispatcher=request.getRequestDispatcher("/views/book/BookInfoSearchForm.jsp");
 		dispatcher.forward(request, response);
 	}
