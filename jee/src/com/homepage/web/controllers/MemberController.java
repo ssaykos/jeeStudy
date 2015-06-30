@@ -1,7 +1,9 @@
 package com.homepage.web.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -12,9 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.homepage.web.beans.MemberBean;
-import com.homepage.web.impls.HelloServiceImpl;
 import com.homepage.web.impls.MemberServiceImpl;
-import com.homepage.web.service.HelloService;
 /*
  * Date :someday;
  * Author : ssaykos@naver.com;
@@ -25,13 +25,15 @@ import com.homepage.web.service.HelloService;
  * Servlet implementation class MemberController
  */
 import com.homepage.web.service.MemberService;
-@WebServlet({"/model2/join.do","/model2/login.do","/member/searchIdForm.do","/member/searchPassForm.do"})
+@WebServlet({"/model2/join.do","/model2/login.do",
+	"/member/searchIdForm.do","/member/searchPassForm.do",
+	"/member/searchAllMembers.do"})
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
       
 	Map<String, Object> map = new HashMap<String, Object>();
 	MemberBean bean = new MemberBean();
-    MemberService service =new MemberServiceImpl();
+    MemberService service = MemberServiceImpl.getInstance();
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -53,7 +55,17 @@ public class MemberController extends HttpServlet {
 			searchPass(request, response);
 			
 			break;
-
+			
+		case "/member/searchAllMembers.do":
+			List<MemberBean> list = new ArrayList<MemberBean>();
+			list=service.getList();
+			
+			request.setAttribute("memberList", list);
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/views/model2/MemberList.jsp");
+			dispatcher.forward(request, response);
+			
+			break;
 		default:
 			break;
 		}
@@ -78,6 +90,8 @@ public class MemberController extends HttpServlet {
 			gologin(request, response);
 			
 			break;
+			
+
 
 		default:
 			break;
@@ -156,7 +170,7 @@ public class MemberController extends HttpServlet {
 
 	private void gojoin(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("go조인 들어옴");
 		String id=request.getParameter("아이디");
 		String password=request.getParameter("비밀번호");
 		String name=request.getParameter("이름");
@@ -166,17 +180,24 @@ public class MemberController extends HttpServlet {
 		bean.setId(id);
 		bean.setPassword(password);
 		bean.setName(name);
-		bean.setAge(Integer.parseInt(age));
+		bean.setAge(age);
 		bean.setAddr(address);
 		
-		/*service.join(id, password, name, Integer.parseInt(age), address);*/
+		int result=service.join(bean);
 		
-		map.put("id", bean.getId());
+		String msg= "";
+		if(result!=0){
+			msg=name+"님 가입을 축하드립니다.";
+		}else {
+			msg="회원가입에 실패하셧습니다.";
+		}
+		request.setAttribute("msg", msg);
+		/*map.put("id", bean.getId());
 		map.put("password", bean.getPassword());
 		map.put("name", bean.getName());
 		map.put("age", String.valueOf(bean.getAge()));
 		map.put("addr", bean.getAddr());
-		
+		*/
 //		request.setAttribute("아이디", id);
 //		request.setAttribute("비밀번호", password);
 //		request.setAttribute("이름", name);
@@ -185,7 +206,7 @@ public class MemberController extends HttpServlet {
 //회원가입후 확인을 위해 먼저 보여줘야 하는줄 알았다 회원가입 후 보여줄 필요 없단다.
 		
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/model2/MemberForm.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/model2/main.jsp");
 		dispatcher.forward(request, response);
 	}
 

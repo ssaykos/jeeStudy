@@ -3,8 +3,8 @@ package com.homepage.web.beans;
 
 public class MemberBean {
 	private String name;
-	private String addr;
-	private int age;
+	private String addr;//디비의 email 대처
+	private String age;
 	private String id;
 	private String password;
 	
@@ -24,11 +24,11 @@ public class MemberBean {
 		this.addr = addr;
 	}
 	
-	public int getAge() {
+	public String getAge() {
 		return age;
 	}
 	
-	public void setAge(int age) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 	

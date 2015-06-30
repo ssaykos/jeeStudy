@@ -18,23 +18,23 @@
 				<table>
 					<tr>
 						<td>아이디</td>
-						<td><input type="text" name="아이디" placeholder="소수점 첫째자리 까지만 입력하세요."></td>
+						<td><input type="text" name="아이디" id="id" placeholder="소수점 첫째자리 까지만 입력하세요."></td>
 					</tr>
 					<tr>
 						<td>비밀번호</td>
-						<td><input type="password" name="비밀번호"></td>
+						<td><input type="password" id="password" name="비밀번호"></td>
 					</tr>
 					<tr>
 						<td>이름</td>
-						<td><input type="text" name="이름" placeholder="이름을 입력하세요."></td>
+						<td><input type="text" name="이름" id="name" placeholder="이름을 입력하세요."></td>
 					</tr>
 					<tr>
 						<td>나이</td>
-						<td><input type="text" name="나이" placeholder="나이를 입력하세요."></td>
+						<td><input type="text" name="나이" id="age" placeholder="나이를 입력하세요."></td>
 					</tr>
 					<tr>
-						<td>주소</td>
-						<td><input type="text" name="주소" placeholder="주소를 입력하세요."></td>
+						<td>이메일 주소</td>
+						<td><input type="text" name="이메일주소" id="email"placeholder="abc@dfg.com"></td>
 					</tr>
 					<tr>
 						<td colspan="2">
@@ -75,6 +75,6 @@
 				</span>
 			</div>
 	</div>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/js/member.js"></script>
+	<%-- <script type="text/javascript" src="<%=request.getContextPath()%>/js/member.js"></script> --%>
 </body>
 </html>
