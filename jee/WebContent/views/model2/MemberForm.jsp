@@ -75,6 +75,6 @@
 				</span>
 			</div>
 	</div>
-	<%-- <script type="text/javascript" src="<%=request.getContextPath()%>/js/member.js"></script> --%>
+	 <script type="text/javascript" src="<%=request.getContextPath()%>/js/member.js"></script> 
 </body>
 </html>
